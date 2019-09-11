@@ -257,6 +257,11 @@ void SessionBox::OnNotifyChangeCallback(std::string id, bool mute)
 		FindSubControl(L"not_disturb")->SetVisible(mute);
 }
 
+void SessionBox::EndDown(bool withAnimation)
+{
+	msg_list_->EndDown(true, false);
+}
+
 void SessionBox::InvokeShowMsgs(bool first_show_msg)
 {
 	first_show_msg_ = first_show_msg;
@@ -316,7 +321,7 @@ void SessionBox::AddNewMsg(const nim::IMMessage &msg, bool create)
 	}
 	session_form_->OnNewMsg(*this, create, flash);
 	
-	if(at_end)
+	if(at_end && SessionManager::GetInstance()->IsSessionBoxActive(session_id_))
 	{
 		msg_list_->EndDown(true, false);
 	}
@@ -663,7 +668,7 @@ void SessionBox::AddWritingMsg(const nim::IMMessage &msg)
 		}
 	}
 
-	if (at_end)
+	if (at_end && SessionManager::GetInstance()->IsSessionBoxActive(session_id_))
 	{
 		msg_list_->EndDown(true, false);
 	}

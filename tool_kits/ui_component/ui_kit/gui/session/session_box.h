@@ -84,6 +84,12 @@ public:
 #pragma region Message
 public:
 	/**
+	 * 将会话列表拉倒最底部
+	 * @return void 无返回值
+	 */
+	void EndDown(bool withAnimation = false);
+
+	/**
 	* 执行加载历史消息的操作
 	* @param[in] first_show_msg 是否是本会话窗体第一次加载历史消息(刚创建会话窗体时设置为true)
 	* @return void 无返回值

@@ -115,6 +115,7 @@ void SessionPluginPage::SetActiveSessionBox(const std::string &session_id)
 				nim_ui::SessionListManager::GetInstance()->InvokeSelectSessionItem(session_id,true,false);
 			else
 				nim_ui::SessionListManager::GetInstance()->InvokeSelectSessionItem(session_id, box->GetSessionType());
+			box->EndDown();
 		}));		
 	}
 }
